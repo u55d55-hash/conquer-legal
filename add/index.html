@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add a friend on Conquer</title>
+<meta name="description" content="A runner wants to race you on Conquer.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .code { font-size: 2.2rem; font-weight: 800; letter-spacing: 0.08em; margin: 0.4em 0 0.2em; }
+  ol li { margin-bottom: 0.6em; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M44 9.5 12 28v44l38 22 38-22V30" fill="none" stroke="#f4f2ed" stroke-width="9"/></svg>
+    <a href="../">CONQUER</a>
+  </header>
+  <h1>A runner wants to race you</h1>
+  <p>Add them as a friend on Conquer and you'll both appear on each other's Friends leaderboard.</p>
+  <p class="meta">Their friend code</p>
+  <p class="code" id="code">····</p>
+  <ol>
+    <li>Get Conquer: <a href="https://github.com/u55d55-hash/conquer-legal/releases/latest">download it here</a> (in early testing on Android).</li>
+    <li>Open <strong>Profile → Friends</strong>.</li>
+    <li>Tap <strong>Scan a friend's QR</strong> and scan their QR again, or type the code above.</li>
+  </ol>
+  <footer>Sat Node · <a href="../privacy/">Privacy policy</a></footer>
+</main>
+<script>
+  // Shows the code from ?c= only if it looks like a Conquer code (8 of the 31 unambiguous characters).
+  (function () {
+    var c = (new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (/^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{8}$/.test(c)) {
+      document.getElementById('code').textContent = c.slice(0, 4) + ' ' + c.slice(4);
+    }
+  })();
+</script>
+</body>
+</html>
